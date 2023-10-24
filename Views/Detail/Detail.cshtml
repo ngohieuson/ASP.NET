@@ -1,0 +1,54 @@
+﻿@model ASP.Context.Product
+@{
+    ViewBag.Title = "Detail";
+}
+<h3>THÔNG TIN SẢN PHẨM </h3>
+@*<p>@Model.Name</p>
+<p>@Model.Price</p>
+<img style="width:20px;height:50px" src="~/Content/images/@Model.Avatar" alt="Image" class="img-fluid">
+<button>ĐẶT HÀNG</button>*@
+
+
+
+
+
+
+<div class="custom-breadcrumns border-bottom">
+    <div class="container">
+        <a href="index.html">Home</a>
+        <span class="mx-3 icon-keyboard_arrow_right"></span>
+        <a href="courses.html">Courses</a>
+        <span class="mx-3 icon-keyboard_arrow_right"></span>
+        <span class="current">Courses</span>
+    </div>
+</div>
+
+
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <p>
+                    <img src="~/Content/images/@Model.Avatar" alt="Image" class="img-fluid">
+                </p>
+            </div>
+            <div class="col-lg-5 ml-auto align-self-center">
+                <h2 class="section-title-underline mb-5">
+                    <span>@Model.Name</span>
+                </h2>
+
+                <p><strong class="text-black d-block">Giá: </strong> @Model.Price</p>
+
+              
+
+
+
+                <p>
+                    <a href="#" class="btn btn-primary rounded-0 btn-lg px-5">Mua ngay</a>
+                    <a href="#" class="btn btn-primary rounded-0 btn-lg px-5">Thêm vào giỏ</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>
