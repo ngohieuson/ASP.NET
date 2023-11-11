@@ -10,7 +10,7 @@ namespace ASP.Controllers
 {
     public class HomeController : Controller
     {
-        WebSiteBHEntities obj = new WebSiteBHEntities();
+        WebBanHangEntities obj = new WebBanHangEntities();
 
         public ActionResult Index()
         {

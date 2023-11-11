@@ -11,12 +11,18 @@ namespace ASP.Controllers
     {
         // GET: Course
         
-            WebSiteBHEntities obj = new WebSiteBHEntities();
+            WebBanHangEntities obj = new WebBanHangEntities();
         public ActionResult Index()
         {
-        var lstCate = obj.Category.ToList();
+            var lstCategory = obj.Category.ToList();
+            return View(lstCategory);
+        }
+      
+        public ActionResult ProductCategory(int Id)
+        {
 
-            return View(lstCate);
+            var listProduct = obj.Product.Where(n => n.CategoryId == Id).ToList();
+            return View(listProduct);
         }
     }
 }

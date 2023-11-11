@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ASP.Context.Brands>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thương hiệu</h2>
+
+<section class="section-content padding-y" style="margin-top:120px">
+    <div class="container">
+        <nav class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 product" style="margin-bottom:30px"  >
+                    <div class="card">
+                        <div class="img-wrap" style="background: #ffd7d7">
+                            <a href="@Url.Action("ProductCategory", "Category", new { id = item.Id })">
+                                <img  style="width:253px; height:300px" src="~/Content/images/@item.Avatar">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title"><a href="#">@item.Name</a></h4>
+                        </div>
+                    </div>
+                </div>
+            }
+        </nav>
+    </div>
+</section>

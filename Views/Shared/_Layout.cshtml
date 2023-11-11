@@ -50,24 +50,52 @@
                 <div class="row align-items-center">
                     <div class="col-lg-9 d-none d-lg-block">
                         <a href="#" class="small mr-3"><span class="icon-question-circle-o mr-2"></span> Have a questions?</a>
-                        <a href="#" class="small mr-3"><span class="icon-phone2 mr-2"></span> 10 20 123 456</a>
-                        <a href="#" class="small mr-3"><span class="icon-envelope-o mr-2"></span> info@mydomain.com</a>
+                        <a href="#" class="small mr-3"><span class="icon-phone2 mr-2"></span> 0382120379</a>
+                        <a href="#" class="small mr-3"><span class="icon-envelope-o mr-2"></span> ngohieuson@gmail.com</a>
                     </div>
                     <div class="col-lg-3 text-right">
-                        @if (Session["idUser"] != null)
-                        {
-                                <a href="#">Son</a>
-                                <a href="~/Login/Logout">Logout</a>
-                        }
-                        else
-                        {
-                            <a href="~/Login/Login">Login</a>
-                        }
-                            
-                        @*<a href="@Url.Action("Login", "Login")" class="small mr-3"><span class="icon-unlock-alt"></span> Log In</a>*@
-                        <a href="@Url.Action("Register", "Register")" class="small btn btn-primary px-4 py-2 rounded-0"><span class="icon-users"></span> Register</a>
+                        <a href="#" class="widget-view">
+
+                            @if (Session["idUser"] != null)
+                            {
+                                <a href="~/Admin/Home/Index" class="icon-link"><i class="fas fa-user-shield"></i> Trang Admin</a>
+                                <a href="@Url.Action("Logout","Login")" class="icon-link"> <i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                            }
+                            else
+                            {
+                                <a href="~/Login/Login" >
+                                    <i class="fas fa-sign-in-alt"></i><span class="icon-unlock-alt"></span> Đăng nhập
+                                </a>
+                                <a href="@Url.Action("Register", "Register")" >
+                                    <i class="fas fa-user-plus"></i> <span class="icon-users"></span> Đăng ký
+                                </a>}
+                        </a>
+                        <a href="@Url.Action("Index","Cart")" class="widget-view">
+                            <div class="icon-area">
+                                <i class="fa fa-shopping-cart"></i>
+                                @if (@Session["count"] == null)
+                                {
+                                    <span class="notify" id="CartCount">0</span>
+                                }
+                                else
+                                {
+                                    <span class="notify" id="CartCount">@Session["count"]</span>
+                                }
+                            </div>
+                            <small class="text"> Giỏ hàng </small>
+                        </a>
+
+
                     </div>
+
+
                 </div>
+                
+                
+            </div>
+                   
+                </div>
+
             </div>
         </div>
         <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
@@ -77,7 +105,7 @@
                     <div class="site-logo">
 
                         <a href="@Url.Action("Index", "Home")" class="d-block">
-                            <img src="~/Content/images/logo.jpg" alt="Image" class="img-fluid">
+                            <img src="~/Content/images/Samsung_wordmark.svg.jpg" alt="Image" class="img-fluid" style=" hight:500px; width:200px">
                         </a>
                     </div>
                     <div class="mr-auto">
@@ -92,40 +120,27 @@
                                     <a href="@Url.Action("Index", "Category")" class="nav-link text-left">Danh mục</a>
                                 </li> 
 
-                                <li class="has-children">
+                                @*<li class="has-children">
 
                                     <a href="@Url.Action("Index", "About")" class="nav-link text-left">adasdad</a>
-                                    @*<ul class="dropdown">
-                <li><a href="teachers.html">Our Teachers</a></li>
-                <li><a href="about.html">Our School</a></li>
-            </ul>*@
-                                </li>
+                               
+                                </li>*@
                                 <li>
 
-                                    <a href="@Url.Action("Index", "Admissions")" class="nav-link text-left">Admissions</a>
+                                    <a href="@Url.Action("Index", "Brands")" class="nav-link text-left">Thương Hiệu</a>
                                 </li>
 
-                                <li>
+                                @*<li>
 
                                     <a href="@Url.Action("Index", "Contact")" class="nav-link text-left">Contact</a>
-                                </li>
+                                </li>*@
                             </ul>                                                                                                                                                                                                                                                                                          </ul>
                         </nav>
 
                     </div>
-                    <div class="ml-auto">
-                        <div class="social-wrap">
-                            <a href="#"><span class="icon-facebook"></span></a>
-                            <a href="#"><span class="icon-twitter"></span></a>
-                            <a href="#"><span class="icon-linkedin"></span></a>
+                  
 
-                            <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black">
-                                <span class="icon-menu h3"></span>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
+            </div>
             </div>
 
         </header>
@@ -133,7 +148,9 @@
 
 
 
-        @RenderBody()
+        <div>
+            @RenderBody()
+            </div>
         <div class="footer">
             <div class="container">
                 <div class="row">

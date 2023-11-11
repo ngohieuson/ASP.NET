@@ -13,10 +13,10 @@ namespace ASP.Context
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class WebSiteBHEntities : DbContext
+    public partial class WebBanHangEntities : DbContext
     {
-        public WebSiteBHEntities()
-            : base("name=WebSiteBHEntities")
+        public WebBanHangEntities()
+            : base("name=WebBanHangEntities")
         {
         }
     
@@ -25,10 +25,12 @@ namespace ASP.Context
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Brand> Brand { get; set; }
+        public virtual DbSet<Brands> Brands { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetail { get; set; }
         public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<Slider> Slider { get; set; }
         public virtual DbSet<Users> Users { get; set; }
     }
 }

@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "ClearCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    $(document).on("click", "#checkoutBtn", function (e) {
+        e.preventDefault();
+        var emailInput = $("#emailInput");
+        var email = emailInput.val();
+
+        if (email.trim() === "") {
+            alert("Vui lòng nhập địa chỉ email.");
+            emailInput.focus();
+            return;
+        }
+
+        processPayment(email);
+        clearCart();
+    });
+</script>
+<h2>ClearCart</h2>
+

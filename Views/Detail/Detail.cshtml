@@ -2,26 +2,40 @@
 @{
     ViewBag.Title = "Detail";
 }
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#addtocart").click(function () {
+            var model = {};
+            //lấy id sản phẩm
+            model.Id = @Model.Id;
+            // lấy số lượng đặt hàng
+            model.Quantity = $("#ipQuantity").val();
+            debugger;
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddToCart", "Cart")',
+                data:  JSON.stringify(model) ,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                    alert("Thêm vào giỏ hàng thành công!")
+                    $('#CartCount').text(@Session["count"] + 1);
+                },
+                error: function () {
+                    alert("Lỗi khi thêm vào giỏ hàng!");
+                }
+            });
+            return false;
+        });
+    });
+</script>
+
+
+
+
+
 <h3>THÔNG TIN SẢN PHẨM </h3>
-@*<p>@Model.Name</p>
-<p>@Model.Price</p>
-<img style="width:20px;height:50px" src="~/Content/images/@Model.Avatar" alt="Image" class="img-fluid">
-<button>ĐẶT HÀNG</button>*@
-
-
-
-
-
-
-<div class="custom-breadcrumns border-bottom">
-    <div class="container">
-        <a href="index.html">Home</a>
-        <span class="mx-3 icon-keyboard_arrow_right"></span>
-        <a href="courses.html">Courses</a>
-        <span class="mx-3 icon-keyboard_arrow_right"></span>
-        <span class="current">Courses</span>
-    </div>
-</div>
 
 
 <div class="site-section">
@@ -36,16 +50,38 @@
                 <h2 class="section-title-underline mb-5">
                     <span>@Model.Name</span>
                 </h2>
+                <h5>
+                    <span>@Model.FullDescription</span>
+                </h5>
 
                 <p><strong class="text-black d-block">Giá: </strong> @Model.Price</p>
 
-              
+
 
 
 
                 <p>
                     <a href="#" class="btn btn-primary rounded-0 btn-lg px-5">Mua ngay</a>
-                    <a href="#" class="btn btn-primary rounded-0 btn-lg px-5">Thêm vào giỏ</a>
+                    <div class="form-row mt-4">
+                        <div class="form-group col-md flex-grow-0">
+                            <div class="input-group mb-3 input-spinner">
+                                <input type="text" id="ipQuantity" class="form-control" value="1">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-primary" id="increaseBtn" type="button">+</button>
+                                    <button class="btn btn-outline-primary" id="decreaseBtn" type="button">-</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md">
+                            <a href="#" id="addtocart" class="btn btn-primary">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="text">
+                                    Thêm vào giỏ hàng
+                                </span>
+                            </a>
+                        </div>
+                    </div>
                 </p>
 
             </div>
